@@ -1,74 +1,110 @@
-# Expert Prompt Engineer System - Documentation Guide
+# Expert Prompt Engineer System
+
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Version](https://img.shields.io/badge/Version-2.1.0-blue.svg)](https://github.com/your-username/expert-prompt-engineer)
+[![Documentation](https://img.shields.io/badge/Documentation-Complete-green.svg)](./framework_documentation.md)
+
+> **World-class prompt engineering system for crafting precise, complete, and effective LLM prompts**
+
+## Overview
+
+The Expert Prompt Engineer System is a comprehensive framework for evaluating and optimizing prompts across six key dimensions: Agent Directives, Anti-Hallucination protocols, Security Assessment, Output Formatting, Performance Optimization, and Advanced Techniques. Built by AI engineering experts, this system transforms basic prompts into production-ready, systematic problem-solving agents.
+
+### Key Features
+
+- 🎯 **Systematic Evaluation**: Multi-dimensional prompt analysis with 1-100 quality scoring
+- 🛡️ **Security-First Design**: OWASP-aligned protection against prompt injection and jailbreaking
+- 🤖 **Agent Directives**: Transform prompts into persistent, fact-checking, systematically-planning agents  
+- 📊 **Flexible Output**: JSON default with XML, Markdown, and custom format support
+- ⚡ **Performance Optimization**: Accuracy-first and cost-efficient modes with clear trade-offs
+- 🔧 **Universal Integration**: Works with Claude, GPT-4, Gemini, and custom API implementations
 
 ## Table of Contents
 1. [Quick Start Guide](#quick-start-guide)
-2. [Using in Chat Windows](#using-in-chat-windows)
+2. [Installation & Usage](#installation--usage)
 3. [Platform Integration](#platform-integration)
 4. [API Integration](#api-integration)
-5. [Advanced Features](#advanced-features)
-6. [Troubleshooting](#troubleshooting)
-
----
+5. [Advanced Configuration](#advanced-configuration)
+6. [Framework Documentation](#framework-documentation)
+7. [Contributing](#contributing)
+8. [License](#license)
 
 ## Quick Start Guide
 
 ### What This System Does
 The Expert Prompt Engineer System evaluates and optimizes prompts across six key dimensions:
 - **Agent Directives**: Systematic problem-solving capabilities
-- **Anti-Hallucination**: Fact verification and accuracy controls
+- **Anti-Hallucination**: Fact verification and accuracy controls  
 - **Security Assessment**: Prompt injection and vulnerability protection
 - **Output Formatting**: Structured JSON responses with alternatives
 - **Performance Optimization**: Accuracy-first vs. cost-efficient approaches
 - **Advanced Techniques**: Few-shot learning, chain-of-thought reasoning
 
-### Basic Usage (30 seconds)
-1. **Paste your prompt** after the system prompt
-2. **Add context** like: "This is for creative writing" or "Prioritize cost efficiency"
-3. **Receive evaluation** with ratings (1-100) and specific improvements
-4. **Get enhanced version** with integrated frameworks automatically included
+### 30-Second Setup
+1. **Copy the system prompt** from [`optimized_prompt_engineer.json`](./optimized_prompt_engineer.json)
+2. **Start a new conversation** in your preferred AI platform
+3. **Paste the system prompt** and begin with:
+   ```
+   Review this prompt: "Write a marketing email for our new product."
+   Context: This is for [use case] with priority: [accuracy/cost]
+   ```
 
-### Example Quick Request
-```
-Review this prompt: "Write a marketing email for our new product."
-```
-
-**You'll get:**
-- Quality rating with specific issues identified
-- Enhanced version with agent directives and security protections
-- JSON output format recommendations
-- Implementation guidance for your specific use case
+### What You Get
+- ✅ Quality rating (1-100) with specific improvement areas identified
+- ✅ Enhanced version with integrated security and agent frameworks  
+- ✅ JSON-formatted recommendations for easy integration
+- ✅ Implementation guidance tailored to your specific use case
 
 ---
 
-## Using in Chat Windows
+## Installation & Usage
 
-### Direct Implementation
-**For Claude (this system):**
-```
-1. Start new conversation
-2. Paste the complete prompt system JSON
-3. Begin with: "Review this prompt: [your prompt here]"
-4. Add context: "This is for [use case] with [priority: accuracy/cost]"
-```
+### Prerequisites
+- Access to Claude, GPT-4, Gemini, or compatible LLM API
+- Basic understanding of prompt engineering concepts
+- JSON parsing capabilities for structured output (optional)
 
-### Conversation Flow
-```
-User: "Review this prompt: Create a chatbot for customer service"
-
-System Response Includes:
-├── Deep Analysis Summary
-├── Agent Directive Integration Assessment  
-├── Security & Robustness Assessment
-├── Quality Rating (1-100)
-├── Optimization Suggestions
-└── Enhanced Prompt with All Frameworks
+### Direct Chat Implementation
+**For Claude (Recommended):**
+```bash
+# 1. Copy the complete system prompt from the JSON file
+# 2. Start new conversation 
+# 3. Paste system prompt
+# 4. Begin evaluation:
 ```
 
-### Follow-up Options
+```
+Review this prompt: "Create a chatbot for customer service"
+Context: High-security application for financial services
+Priority: Accuracy-first approach
+```
+
+### Response Structure
+```json
+{
+  "analysis": {
+    "task_clarification": "Customer service chatbot with financial security requirements",
+    "quality_rating": 75,
+    "optimization_mode": "accuracy_first"
+  },
+  "evaluation": {
+    "agent_directive_assessment": "Requires persistence and fact verification",
+    "security_assessment": "High vulnerability - needs comprehensive protection",
+    "format_recommendation": "JSON with response validation"
+  },
+  "recommendations": {
+    "enhanced_prompt": "[Complete enhanced version with all frameworks]",
+    "implementation_notes": ["Security boundaries required", "Add input validation"],
+    "integration_guidance": "Implement Level 2 security with real-time monitoring"
+  }
+}
+```
+
+### Command Options
 - **"Make it more cost-efficient"** → Switches to cost-optimization mode
-- **"Add more security"** → Enhanced security framework implementation
-- **"Simplify for beginners"** → Removes advanced features
-- **"Show me the API version"** → Provides API-compatible format
+- **"Add maximum security"** → Implements Level 3 security framework
+- **"Output as XML"** → Changes to XML format
+- **"Exclude agent directives"** → Provides basic prompt only
 
 ---
 
@@ -267,7 +303,7 @@ def evaluate_with_gemini(user_prompt):
 
 ### Batch Processing Setup
 
-**For Multiple Prompt Evaluation:**
+**Multiple Prompt Evaluation:**
 ```python
 def batch_evaluate_prompts(prompt_list, context_list=None):
     results = []
@@ -280,37 +316,61 @@ def batch_evaluate_prompts(prompt_list, context_list=None):
             "context": context
         })
     return results
+
+# Usage example
+prompts = [
+    "Write a story about dragons",
+    "Create a customer service chatbot", 
+    "Analyze this financial data"
+]
+contexts = ["creative_writing", "conversational_ai", "data_analysis"]
+results = batch_evaluate_prompts(prompts, contexts)
 ```
 
----
+### Error Handling
 
-## Advanced Features
+```python
+import time
+import logging
 
-### Adding/Removing Agent & Anti-Hallucination Features
+def robust_prompt_evaluation(prompt, max_retries=3, backoff_factor=2):
+    """Robust evaluation with retry logic and error handling"""
+    for attempt in range(max_retries):
+        try:
+            result = evaluate_prompt_with_expert_system(prompt)
+            return result
+        except Exception as e:
+            if attempt == max_retries - 1:
+                logging.error(f"Failed to evaluate prompt after {max_retries} attempts: {e}")
+                return {"error": str(e), "prompt": prompt}
+            wait_time = backoff_factor ** attempt
+            time.sleep(wait_time)
+            logging.warning(f"Attempt {attempt + 1} failed, retrying in {wait_time}s: {e}")
+```
 
-#### **Agent Directives Customization**
+## Advanced Configuration
 
-**Full Integration (Default):**
+### Agent Directives Customization
+
+**Default Implementation:**
 ```json
 {
-  "agent_directives": {
-    "persistence": "Continue until query completely resolved",
-    "tool_usage": "Verify information rather than guessing", 
-    "deliberate_planning": "Plan extensively before function calls"
-  }
+  "persistence": "Continue until query completely resolved",
+  "tool_usage": "Verify information rather than guessing", 
+  "deliberate_planning": "Plan extensively before function calls"
 }
 ```
 
-**Custom Adaptation Examples:**
+**Domain-Specific Adaptations:**
 ```python
-# For Creative Writing
+# Creative Writing
 creative_directives = {
     "persistence": "Continue until story elements are consistent and complete",
     "tool_usage": "Research historical/cultural accuracy for world-building",
     "deliberate_planning": "Plan character arcs and plot development systematically"
 }
 
-# For Data Analysis  
+# Data Analysis  
 analytical_directives = {
     "persistence": "Continue until all calculations are verified and validated",
     "tool_usage": "Verify data sources and validate statistical methods",
@@ -318,326 +378,90 @@ analytical_directives = {
 }
 ```
 
-**Removing Agent Features:**
-Add to your request: `"Exclude agent directives - basic prompt only"`
-
-#### **Anti-Hallucination Framework Control**
-
-**Standard Implementation:**
-- Separates real-world facts from fictional content
-- Uses `[RESEARCH_NEEDED]` for uncertain information
-- Applies fact sensitivity levels (high/moderate/flexible)
-
-**Custom Sensitivity Levels:**
-```python
-# High-Accuracy Mode (Medical/Legal/Financial)
-high_accuracy_config = {
-    "fact_threshold": "verify_all_claims",
-    "uncertainty_handling": "explicit_confidence_scores",
-    "source_requirements": "peer_reviewed_only"
-}
-
-# Creative Mode (Fiction/Marketing)
-creative_config = {
-    "fact_threshold": "basic_plausibility", 
-    "uncertainty_handling": "creative_liberties_allowed",
-    "fictional_consistency": "internal_logic_only"
-}
+**Excluding Agent Features:**
+```
+"Exclude agent directives - basic prompt only"
 ```
 
-**Disabling Anti-Hallucination:**
-Add: `"Creative prompt - allow fictional elements without fact-checking"`
+### Security Configuration
 
-### Security Considerations
+**Security Levels:**
+- **Level 1**: Basic input validation and role boundaries
+- **Level 2**: Multi-layered filtering with comprehensive test cases (Default)
+- **Level 3**: Fine-tuned models with real-time analysis
 
-#### **Security Assessment Levels**
-
-**Level 1 - Basic Protection:**
-- Input validation for obvious injection attempts
-- Role boundary enforcement
-- Basic output monitoring
-
-**Level 2 - Enhanced Security (Default):**
-- Multi-layered filtering (keyword + semantic)
-- Instruction hierarchy enforcement
-- Comprehensive test case validation
-
-**Level 3 - Maximum Security:**
-- Fine-tuned injection-resistant models
-- Real-time output analysis
-- Advanced threat pattern recognition
-
-#### **Custom Security Implementation:**
-
-**High-Risk Applications (Banking, Healthcare):**
+**High-Risk Implementation:**
 ```python
 max_security_config = {
     "input_validation": "comprehensive_sanitization",
-    "output_monitoring": "real_time_analysis",
+    "output_monitoring": "real_time_analysis", 
     "injection_resistance": "fine_tuned_models",
-    "audit_logging": "complete_interaction_logs",
-    "escalation_triggers": "human_review_required"
+    "audit_logging": "complete_interaction_logs"
 }
 ```
 
-**Low-Risk Applications (Creative, Educational):**
-```python
-basic_security_config = {
-    "input_validation": "basic_filtering",
-    "output_monitoring": "periodic_sampling", 
-    "injection_resistance": "standard_prompting",
-    "audit_logging": "summary_only"
-}
-```
+### Output Format Options
 
-### Output Formatting
-
-#### **JSON Format System (Default)**
-
-**Standard Structure:**
+**JSON (Default):**
 ```json
 {
-  "analysis": {
-    "task_clarification": "string",
-    "quality_rating": "integer (1-100)",
-    "optimization_mode": "accuracy_first|cost_first|balanced"
-  },
-  "evaluation": {
-    "agent_directive_assessment": "string",
-    "security_assessment": "string", 
-    "format_recommendation": "string"
-  },
-  "recommendations": {
-    "enhanced_prompt": "string",
-    "implementation_notes": ["array of strings"],
-    "integration_guidance": "string"
-  }
+  "evaluation_summary": "string",
+  "quality_score": "number",
+  "improvements": ["array"],
+  "enhanced_version": "string"
 }
 ```
 
-**Custom JSON Schemas:**
-```python
-# For API Integration
-api_schema = {
-    "evaluation_summary": "string",
-    "quality_score": "number",
-    "improvements": ["array"],
-    "enhanced_version": "string",
-    "api_compatible": "boolean"
-}
-
-# For Documentation
-documentation_schema = {
-    "title": "string",
-    "description": "string", 
-    "usage_examples": ["array"],
-    "parameters": {"object"},
-    "expected_outputs": {"object"}
-}
-```
-
-#### **Alternative Formats**
-
-**XML for Enterprise Systems:**
-Request: `"Output as XML for enterprise integration"`
+**XML for Enterprise:**
 ```xml
 <prompt_evaluation>
     <analysis quality_rating="85" mode="accuracy_first"/>
-    <security_assessment level="enhanced"/>
     <recommendations>
         <enhanced_prompt>[Enhanced version]</enhanced_prompt>
-        <integration_notes>[Implementation guidance]</integration_notes>
     </recommendations>
 </prompt_evaluation>
 ```
 
 **Markdown for Documentation:**
-Request: `"Output as Markdown for team documentation"`
+```markdown
+# Prompt Evaluation Results
+**Quality Rating:** 85/100
+## Enhanced Version
+[Complete enhanced prompt with frameworks]
+```
 
-### Accuracy vs Cost Considerations
+### Performance Modes
 
-#### **Accuracy-First Mode (Default)**
-
-**Characteristics:**
-- Comprehensive validation steps
+**Accuracy-First (Default):**
 - Lower temperature settings (0.0-0.3)
-- Generous context allocation (40-50% for responses)
-- Redundant critical instructions
+- Comprehensive validation steps
+- Generous context allocation (40-50%)
 - Multiple examples and edge cases
 
-**Best For:**
-- Medical, legal, financial applications
-- Educational content
-- Critical business decisions
-- Safety-sensitive systems
-
-**Token Investment Philosophy:**
-"Invest tokens strategically for maximum reliability and precision"
-
-#### **Cost-First Mode**
-
-**Activation:** Add `"Prioritize cost efficiency"` or `"Optimize for token usage"`
-
-**Characteristics:**
-- Streamlined instructions
+**Cost-First Mode:**
+```
+"Prioritize cost efficiency" or "Optimize for token usage"
+```
+- Streamlined instructions  
 - Higher temperature settings (0.4-0.7)
-- Efficient context allocation (20-30% for responses)
-- Concise examples
-- Eliminated redundancy
+- Efficient context allocation (20-30%)
+- Minimal but effective examples
 
-**Best For:**
-- High-volume applications
-- Simple task automation
-- Prototype development
-- Budget-constrained projects
+## Framework Documentation
 
-**Example Comparison:**
-```python
-# Accuracy-First (47 tokens)
-accuracy_prompt = """
-Extract financial metrics from this document. Focus specifically on: 
-1) Revenue figures with exact amounts, 2) Profit margins with percentages, 
-3) Growth rates with time periods. If data is unclear, state 'Data not available' 
-rather than estimating. Validate all calculations before responding.
-"""
+For detailed technical information about the core frameworks, see:
 
-# Cost-First (12 tokens)  
-cost_prompt = "Extract revenue, profit margins, and growth rates from this document."
+📖 **[Core Framework Documentation](./framework_documentation.md)**
 
-# Trade-off: 292% token increase for significantly higher accuracy and reliability
-```
+This comprehensive guide covers:
+- **[Agent Directives](./framework_documentation.md#agent-directives)**: Systematic problem-solving implementation
+- **[Anti-Hallucination Guidelines](./framework_documentation.md#anti-hallucination-guidelines)**: Fact verification protocols
+- **[Security Considerations](./framework_documentation.md#security-considerations)**: OWASP-aligned protection strategies
+- **[Output Formats](./framework_documentation.md#output-formats-and-considerations)**: Format selection and optimization
+- **[Accuracy vs Cost](./framework_documentation.md#accuracy-vs-cost-considerations)**: Performance trade-off strategies
 
-#### **Balanced Mode**
-
-**Activation:** Request `"Balanced optimization"` or `"Show both approaches"`
-
-**Provides:**
-- Both accuracy-first and cost-first versions
-- Clear trade-off analysis
-- Token cost estimates
-- Accuracy impact assessment
-- Use case recommendations
-
-### Different Prompt Types
-
-#### **Creative Writing Prompts**
-
-**Specialized Features:**
-- Character consistency tracking
-- World-building accuracy verification  
-- Genre convention adherence
-- Narrative flow optimization
-
-**Example Optimization:**
-```
-Original: "Write a story"
-Enhanced: "Write a 1500-word science fiction story set in 2150 about AI consciousness, 
-targeting adult readers. Include: protagonist with clear motivation, central conflict 
-around AI rights, resolution that explores themes of identity and consciousness. 
-Agent directives ensure character consistency. Anti-hallucination framework verifies 
-scientific plausibility. JSON output with story elements tracking."
-```
-
-#### **Data Analysis Prompts**
-
-**Specialized Features:**
-- Statistical methodology validation
-- Calculation accuracy verification
-- Data source credibility assessment
-- Visualization recommendations
-
-**Security Considerations:**
-- Data injection prevention
-- Result manipulation protection
-- Source validation requirements
-
-#### **Code Generation Prompts**
-
-**Specialized Features:**
-- Syntax perfection requirements
-- Security vulnerability scanning
-- Documentation completeness
-- Testing framework integration
-
-**Enhanced Security:**
-- Malicious code prevention
-- Injection attack resistance
-- Access control validation
-
-#### **Conversational AI Prompts**
-
-**Specialized Features:**
-- Context retention optimization
-- Personality consistency
-- Response appropriateness
-- Fact verification protocols
-
-**High Vulnerability Assessment:**
-- Social engineering resistance
-- Information extraction protection
-- Role confusion prevention
-
-#### **Educational Content Prompts**
-
-**Specialized Features:**
-- Subject matter accuracy
-- Age-appropriate language
-- Learning objective alignment
-- Assessment integration
-
-**Accuracy Critical:**
-- Fact verification mandatory
-- Source citation requirements
-- Pedagogical soundness
-
-#### **Business Analysis Prompts**
-
-**Specialized Features:**
-- Market data accuracy
-- Competitive intelligence protection
-- Strategic recommendation validation
-- Risk assessment completeness
-
-**Enterprise Security:**
-- Confidential information protection
-- Data source validation
-- Strategic insight verification
-
----
-
-## Troubleshooting
-
-### Common Issues
-
-**Issue:** "System doesn't apply agent directives"
-**Solution:** Check that request doesn't include exclusion phrases like "basic prompt only"
-
-**Issue:** "Too verbose/expensive responses"  
-**Solution:** Add "prioritize cost efficiency" to switch optimization modes
-
-**Issue:** "Security warnings for benign prompts"
-**Solution:** Context matters - specify use case like "for educational purposes only"
-
-**Issue:** "Not outputting JSON format"
-**Solution:** Explicitly request "output as JSON" if system doesn't default correctly
-
-### Support and Updates
-
-**Documentation Version:** 2.1.0
-**Last Updated:** Based on prompt system version 2.1.0
-**Compatibility:** Claude Sonnet 4, GPT-4, Gemini Pro
-**Support:** Reference this documentation for implementation guidance
-
-### Best Practices Summary
-
-1. **Always specify context** - "This is for [use case]"
-2. **Choose optimization mode explicitly** - Accuracy-first vs cost-first
-3. **Request appropriate security level** - Based on application risk
-4. **Specify output format needs** - JSON, XML, Markdown
-5. **Test with representative examples** - Before production deployment
-6. **Monitor performance metrics** - Quality scores and token usage
-7. **Iterate based on results** - Use feedback to refine prompts
-
----
-
-*This documentation covers the complete Expert Prompt Engineer System. For additional support or custom implementations, reference the specific integration examples and API configurations provided above.*
+Each section includes:
+- Quick summaries for rapid understanding
+- Detailed technical implementation guidance  
+- External references to authoritative sources
+- Real-world examples and code samples
